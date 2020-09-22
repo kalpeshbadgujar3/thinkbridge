@@ -1,4 +1,5 @@
-﻿using DI_UnityContainer;
+﻿using DataContract;
+using DI_UnityContainer;
 using Managers;
 using MasterInterface;
 using Unity;
@@ -10,6 +11,12 @@ namespace ShopBridge
     {
         public static void Initialise()
         {
+            #region DataContracts
+            // Register Storeprocedure
+            DIUnity.GetUnityContainer().RegisterType<IspInsertItem, SpInsertItem>();
+            #endregion
+
+            #region Managers
             // Register Database manager
             DIUnity.GetUnityContainer().RegisterType<IDatabaseManager, DatabaseManager>();
 
@@ -18,7 +25,9 @@ namespace ShopBridge
                 new InjectionConstructor(
                     DIUnity.GetUnityContainer().Resolve<IDatabaseManager>()
                     )
-                );
+                );  
+            #endregion
+
         }
     }
 }

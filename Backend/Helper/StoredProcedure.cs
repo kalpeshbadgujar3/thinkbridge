@@ -8,6 +8,7 @@ namespace Helper
 {
     public enum StoredProcedure
     {
-        spGetAllItems
+        spGetAllItems,
+        spInsertItem
     }
 }

@@ -5,6 +5,7 @@ namespace MasterInterface
 {
     public interface IDatabaseManager
     {
-        Task<string> GetAllItems(StoredProcedure nameOfStoredProcedure);
+        Task<string> GetAllRecords(StoredProcedure nameOfStoredProcedure);
+        Task<bool> AddRecord(StoredProcedure nameOfStoredProcedure, IStoredProcedure storedProcedureObject);
     }
 }

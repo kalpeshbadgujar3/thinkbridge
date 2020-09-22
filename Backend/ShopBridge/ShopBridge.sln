@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Managers", "..\Managers\Man
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityContainer", "..\UnityContainer\UnityContainer.csproj", "{1A926F0D-10DD-45C1-8124-FA70DD6BCC8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "..\Helper\Helper.csproj", "{51550F99-AC9F-49C9-860E-E5BEB70CB773}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContract", "..\DataContract\DataContract.csproj", "{2BEDC030-996D-4DF5-89A1-C9C326944C45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{1A926F0D-10DD-45C1-8124-FA70DD6BCC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A926F0D-10DD-45C1-8124-FA70DD6BCC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A926F0D-10DD-45C1-8124-FA70DD6BCC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51550F99-AC9F-49C9-860E-E5BEB70CB773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51550F99-AC9F-49C9-860E-E5BEB70CB773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51550F99-AC9F-49C9-860E-E5BEB70CB773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51550F99-AC9F-49C9-860E-E5BEB70CB773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BEDC030-996D-4DF5-89A1-C9C326944C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BEDC030-996D-4DF5-89A1-C9C326944C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BEDC030-996D-4DF5-89A1-C9C326944C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BEDC030-996D-4DF5-89A1-C9C326944C45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

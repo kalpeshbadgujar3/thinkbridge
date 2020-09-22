@@ -32,7 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +48,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Helper\Helper.csproj">
+      <Project>{51550f99-ac9f-49c9-860e-e5beb70cb773}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MasterInterface\MasterInterface.csproj">
       <Project>{b3903daa-d124-45fc-ab98-5ad2e7df0070}</Project>
       <Name>MasterInterface</Name>
