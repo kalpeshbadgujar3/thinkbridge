@@ -1,0 +1,94 @@
+<div class="container">
+    <form [formGroup]="itemForm">
+        <label for="iname">Item Name</label>
+        <input type="text" formControlName="itemName" id="iName" name="itemName">
+        <label *ngIf="form.itemName.value && form.itemName.touched && form.itemName.errors" style="color: #FF0000;">Max 50 characters allowed</label>
+        <br> <br>
+        <label for="description">Description</label>
+        <input type="text" formControlName="itemDescription" id="description" name="description">
+        <label *ngIf="form.itemDescription.value && form.itemDescription.touched && form.itemDescription.errors" style="color: #FF0000;">Max 200 characters allowed</label>
+        <br> <br>
+        <label for="itemPrice">Price</label>
+        <input type="number" formControlName="itemPrice" id="itemPrice" name="itemPrice">
+        <label *ngIf="form.itemPrice.value && form.itemPrice.touched && form.itemPrice.errors" style="color: #FF0000;">Price should be positive integer!</label>
+        <br> <br>
+
+        <div style="text-align:center; margin-top: 10px; ">
+            <mat-card style="margin-top:10px; width: 25%;">
+                <mat-card-content>
+                    <ul>
+                        <li *ngFor="let file of files">
+                            <mat-progress-bar [value]="file.progress"></mat-progress-bar>
+                            <span id="file-label">
+
+                            </span>
+                        </li>
+                    </ul>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button [disabled]="!itemForm.valid" mat-button color="warn" (click)="onUploadImageClick()">
+                        <mat-icon>file_upload</mat-icon>
+                        Upload
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+            <input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*"
+                style="display:none;" />
+        </div>
+        <br>
+    </form>
+    <button [disabled]="!itemForm.valid || files.length == 0" (click)="onAddClick()">Add</button> 
+</div>
+<style>
+    img {
+        border: 1px solid #FF0000;
+        /* Gray border */
+        border-radius: 4px;
+        /* Rounded border */
+        padding: 5px;
+        /* Some padding */
+        width: 50px;
+        height: 50px;
+        /* Set a small width */
+        align-content: center;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<br> <br>
+<div>
+    <table *ngIf="showGrid" style="text-align: center;">
+        <tr>
+            <th>Item ID</th>
+            <th>Image</th>
+            <th>Item Name</th>
+            <th>Item Description</th>
+            <th>Item Price</th>
+        </tr>
+        <tr *ngFor="let item of itemsList">
+            <td>{{item.ItemID}}</td>
+            <td>
+                <img [src]="item.ImageURL" onerror="this.src = './assets/images/no-image.jpg';">
+            </td>
+            <td>{{item.ItemName}}</td>
+            <td>{{item.ItemDescription}}</td>
+            <td>{{item.ItemPrice}}</td>
+        </tr>
+    </table>
+</div>
