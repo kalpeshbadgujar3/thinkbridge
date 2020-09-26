@@ -5,18 +5,16 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace Managers
 {
+    /// <summary>
+    /// Database manager is a middle layer between feature specific manager and DB 
+    /// Contains all generic methods so can be reused in the application for various implemenations, eliminates duplicate code
+    /// </summary>
     public class DatabaseManager : IDatabaseManager
     {
-        public DatabaseManager()
-        {
-            
-        }
-
         /// <summary>
         /// Get connection string from config
         /// </summary>
@@ -26,7 +24,13 @@ namespace Managers
             return ConfigurationManager.ConnectionStrings[Constants.DatabaseName].ConnectionString;
         }
 
-        
+        /// <summary>
+        /// Get all records from DB
+        /// This is the generic method responsible to get all records based on storedprocedure name
+        /// Result is retrieved in json format for better performance
+        /// </summary>
+        /// <param name="nameOfStoredProcedure"></param>
+        /// <returns></returns>
         public async Task<string> GetAllRecords(StoredProcedure nameOfStoredProcedure)
         {
             using (SqlConnection sqlConnection = new SqlConnection(GetConnectionString())) 
@@ -44,7 +48,13 @@ namespace Managers
             }
         }
 
-        public async Task<bool> AddRecord(StoredProcedure nameOfStoredProcedure, IStoredProcedure storedProcedureObject)
+        /// <summary>
+        /// Add record to the DB
+        /// </summary>
+        /// <param name="nameOfStoredProcedure"></param>
+        /// <param name="storedProcedureObject"></param>
+        /// <returns></returns>
+        public async Task<int> AddRecord(StoredProcedure nameOfStoredProcedure, IStoredProcedure storedProcedureObject)
         {
             using (SqlConnection sqlConnection = new SqlConnection(GetConnectionString()))
             {
@@ -55,16 +65,22 @@ namespace Managers
                 command.CommandType = CommandType.StoredProcedure;
                 await sqlConnection.OpenAsync().ConfigureAwait(false);
 
-                GetSqlParameterCollection(storedProcedureObject, ref command);
+                command = await GetSqlParameterCollection(storedProcedureObject, command);
 
-                object jsonResult = await command.ExecuteScalarAsync().ConfigureAwait(false);
+                object jsonResult;
+                try
+                {
+                    jsonResult = await command.ExecuteScalarAsync().ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
                 sqlConnection.Close();
 
-                bool isAdded = false;
+                int itemId = Convert.ToInt32(jsonResult);
 
-                isAdded = Convert.ToBoolean(jsonResult) ? true : false;
-
-                return isAdded;
+                return itemId;
             }
         }
 
@@ -74,27 +90,24 @@ namespace Managers
         /// <param name="StoredProcedureObject"></param>
         /// <param name="sqlCommand"></param>
         /// <returns></returns>
-        private List<SqlParameter> GetSqlParameterCollection(IStoredProcedure StoredProcedureObject,
-            ref SqlCommand sqlCommand)
+        private async Task<SqlCommand> GetSqlParameterCollection(IStoredProcedure StoredProcedureObject,
+            SqlCommand sqlCommand)
         {
-            List<SqlParameter> parameterList = new List<SqlParameter>();
             foreach (var prop in StoredProcedureObject.GetType().GetProperties())
             {
                 var propertyValue = prop.GetValue(StoredProcedureObject, null);
 
                 if (IsNullable(prop.PropertyType) == false || propertyValue != null)
                 {
-                    parameterList.Add(new SqlParameter(prop.Name, propertyValue));
                     sqlCommand.Parameters.Add(new SqlParameter(prop.Name, propertyValue));
                 }
                 else
                 {
-                    parameterList.Add(new SqlParameter(prop.Name, DBNull.Value));
                     sqlCommand.Parameters.Add(new SqlParameter(prop.Name, DBNull.Value));
                 }
             }
 
-            return parameterList;
+            return sqlCommand;
         }
 
         /// <summary>

@@ -4,7 +4,7 @@
     {
         string ItemName { get; set; }
         string ItemDescription { get; set; }
-        decimal Price { get; set; }
+        decimal ItemPrice { get; set; }
         string FileName { get; set; }
         string FileExtension { get; set; }
     }

@@ -1,5 +1,4 @@
-﻿using Helper;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 
 namespace MasterInterface
@@ -8,8 +7,8 @@ namespace MasterInterface
     {
         Task<string> GetAllItems();
 
-        Task<bool> AddItem(IspInsertItem ispInsertItem);
+        Task<int> AddItem(IspInsertItem ispInsertItem);
 
-        Task<bool> UploadImage(HttpPostedFile postedFile);
+        Task<bool> UploadImage(HttpPostedFile postedFile, int itemID);
     }
 }

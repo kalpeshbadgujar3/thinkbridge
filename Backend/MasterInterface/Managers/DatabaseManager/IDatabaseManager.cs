@@ -6,6 +6,6 @@ namespace MasterInterface
     public interface IDatabaseManager
     {
         Task<string> GetAllRecords(StoredProcedure nameOfStoredProcedure);
-        Task<bool> AddRecord(StoredProcedure nameOfStoredProcedure, IStoredProcedure storedProcedureObject);
+        Task<int> AddRecord(StoredProcedure nameOfStoredProcedure, IStoredProcedure storedProcedureObject);
     }
 }

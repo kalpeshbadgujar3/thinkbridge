@@ -48,10 +48,9 @@
     <Compile Include="StoredProcedure\IspInsertItem.cs" />
     <Compile Include="StoredProcedure\IStoredProcedure.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Helper\Helper.csproj">
-      <Project>{51550F99-AC9F-49C9-860E-E5BEB70CB773}</Project>
+      <Project>{51550f99-ac9f-49c9-860e-e5beb70cb773}</Project>
       <Name>Helper</Name>
     </ProjectReference>
   </ItemGroup>

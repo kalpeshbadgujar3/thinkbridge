@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ShopBridge
 {
@@ -9,7 +11,9 @@ namespace ShopBridge
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            // Enabled cors so frontend application can interact with backend api application
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
