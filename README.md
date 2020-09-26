@@ -101,7 +101,7 @@ Backend architecture includes several libraries i.e. N-Tier architecture holding
 	
 With the said terms, we can consider the application is scalable enough to extend implementation. 
 Basic coding guidelines are strictly followed like naming conventions, code refactoring, code reusability, code readability, code commenting. 
-SQL queries(SPs) are also written considering basic guidelines and to get grid recods SQL JSON feature is used, a nice feature to boost performance by eliminating DB object to application object mapping, simple return JSON from SQL.
+SQL queries(SPs) are also written considering basic guidelines and to get grid records SQL JSON feature is used, a nice feature to boost performance by eliminating DB object to application object mapping, simply return JSON from SQL.
 
 However, I consider some scope of improvement is there but due to current role and responsibilities could not spend much time on this for additional customization.
 - UI/Design can be improved
@@ -116,8 +116,11 @@ Looking forward to your thoughts!
 
 
 **Sincerely,**
+
 **Kalpesh Badgujar,**
+
 **kalpeshbadgujar3@gmail.com,**
+
 **+917249647191**
    
 
