@@ -81,7 +81,9 @@ Backend architecture includes several libraries i.e. N-Tier architecture holding
 	- Database manager holds all generic methods for basic CRUD operations like GetAll, AddRecord, Update-Delete(unavailable at the moment). 
 	  Generic methods provides code reusability and minimizes the duplicate code.
 	- Database Manager interacts with database.
-	- ItemManager is the feature specific manager which holds feature specific methods that interacts with database manager to complete DB interaction for CRUD.
+	- ItemManager is the feature specific manager which holds feature specific methods that 
+	interacts with database manager to complete DB interaction for CRUD.
+	
 5. MasterInterface
 	- As we already know that the application is loosely coupled, without interface it was not possible.
 	- This library holds all the interfaces required/used in the application.
@@ -89,6 +91,7 @@ Backend architecture includes several libraries i.e. N-Tier architecture holding
 	- MasterInterface includes an empty interface called IStoredProcedure which enable us to have generic implementation using interface, all stored procedure interface must implement IStoredProcedure.
 	  For example, if we see DatabaseManager.AddRecord() receives two params. first enum name and second is IStoredProcedure so this methods results generic and any feature can reuse the method to add an entity without any code changes. 
 	- MasterInterfaces are also benificial to register and resolve the types(Class-Object). 
+
 6. UnityContainer
     - This library contains a static class and static method, which is used return the unity container.
 	- In order to create/get object of any viewModel, StoredProcedure, Manager we are using unity container.
