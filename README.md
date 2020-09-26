@@ -12,11 +12,11 @@ Code is updated under different directories as below:
 3. DB = Contains the DB backup file to restore DB on your environment. we can find the SQL script as well if bak file does not works.
 
 ## Steps to run application
-Step 1: Restore database using backup file provided in **DB** folder.
-Step 2: Load ShopBridge solution i.e. backend application in visual studio from the **Backend\ShopBridge** folder.
+1: Restore database using backup file provided in **DB** folder.
+2: Load ShopBridge solution i.e. backend application in visual studio from the **Backend\ShopBridge** folder.
 	- Change connection string in **Web.config** file
 	- Run project, it will open up in new browser window say https://localhost:44319/ Lets refer this as a ApiURL, will be needing in step 3.
-Step 3: Run frontend application
+3: Run frontend application
 	- Open visual code
 	- Goto File => Open folder, please load frontend code from **frontend\ShopBridge** folder
 	- Update the api url in **frontend\ShopBridge\src\environments\environment.ts** file, api url is nothing but the url we got in step 2. 
