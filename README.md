@@ -98,8 +98,8 @@ Backend architecture includes several libraries i.e. N-Tier architecture holding
 	- We can refer the RegisterType class inside the **ShopBridge\App_Start** where we register the types at application bootstrap and when ever user needs object, he/she can resolve using DI itself.
 	- Elimiates the new keyword and application becomes loosely couples.
 	- Constructor dependency implementation can be observed as well.
-
-with the said terms, we can consider the application is scalable enough to extend implementation. 
+	
+With the said terms, we can consider the application is scalable enough to extend implementation. 
 Basic coding guidelines are strictly followed like naming conventions, code refactoring, code reusability, code readability, code commenting. 
 SQL queries(SPs) are also written considering basic guidelines and to get grid recods SQL JSON feature is used, a nice feature to boost performance by eliminating DB object to application object mapping, simple return JSON from SQL.
 
