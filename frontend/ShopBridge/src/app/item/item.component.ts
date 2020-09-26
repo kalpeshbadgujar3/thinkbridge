@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgModule } from '@angular/core';
 import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError, map, takeWhile } from 'rxjs/operators';
@@ -21,6 +21,7 @@ export class ItemComponent implements OnInit {
 
   alive = true;
   itemsList: any;
+  showGrid = false;
 
   itemForm = new FormGroup({
     itemName: new FormControl('', [Validators.required, Validators.maxLength(50)]),
@@ -107,10 +108,18 @@ export class ItemComponent implements OnInit {
     this.itemService.getItems().pipe(takeWhile(() => this.alive))
       .subscribe(response => {
         this.itemsList = response.data;
-        this.itemsList.forEach(element => {
-          element.ImageURL = this.sanitizer.bypassSecurityTrustUrl(response.backendServerUrl + element.ImageURL);
-        });
         this.itemForm.reset();
+
+        if(this.itemsList != null)
+        {
+          this.itemsList.forEach(element => {
+            element.ImageURL = this.sanitizer.bypassSecurityTrustUrl(response.backendServerUrl + element.ImageURL);
+          });
+          this.showGrid = true;
+        }else{
+          this.showGrid = false;
+        }
+        
       });
   };
 
