@@ -81,8 +81,7 @@ Backend architecture includes several libraries i.e. N-Tier architecture holding
 	- Database manager holds all generic methods for basic CRUD operations like GetAll, AddRecord, Update-Delete(unavailable at the moment). 
 	  Generic methods provides code reusability and minimizes the duplicate code.
 	- Database Manager interacts with database.
-	- ItemManager is the feature specific manager which holds feature specific methods that 
-	interacts with database manager to complete DB interaction for CRUD.
+	- ItemManager is the feature specific manager which holds feature specific methods that interacts with database manager to complete DB interaction for CRUD.
 	
 5. MasterInterface
 	- As we already know that the application is loosely coupled, without interface it was not possible.
