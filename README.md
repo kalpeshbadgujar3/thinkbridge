@@ -39,23 +39,23 @@ Note: You can try uploading non-image file so thumbnail can be seen as no image.
 ## Technical implementation
 Developed application can be considered as loosely coupled stand-alone application. We can deploy such applications on same or different servers.
 Such environment can benefit in individual frontend or backend development/deployment and performance boost in async way.
-The application has two major factors, frontend which is developed using angular and backend developed using asp.net wep API.
+The application has two major factors, frontend which is developed using angular and backend developed using asp.net web API.
 
 ###### Frontend architecture
 Beginner development appoach is followed to develop frontend architecture where a component interact with web api using HTTP client.
 Tried to use Angular material for design but had some issues so its working partially, focused on functionality.
-Reactive form is used for form implementation, gives more control using ts file. Some inline styles are used for basic grid strcture design.
+Reactive form is used for form implementation, gives more control using ts file. Some inline styles are used for basic grid structure design.
 
 ###### Backend architecture
 Intermediate/Expert approach is followed to develop backend architecture considering performance(async programing), 
 generic and reusable code, use of OOPS concepts(interface,DI).
-Backend architecture includes several libraries holding individual objective i.e. N-Tier architecture, please find the details as below:
+Backend architecture includes several libraries i.e. N-Tier architecture holding individual objective, please find the details as below:
 1. WebAPI startup project (ShopBridge)
 	- This is the entry point project to which frontend application interacts directly.
 	- All APIs can be created under **ShopBridge\Controllers\api** directory.
 	- Includes single API at the moment i.e. ItemController with getAllItems() and AddItem() methods.
 	- Uploaded images can be found under **ShopBridge\uploads\images** directory.
-	- This project holds reference of DataContract, Helper, Managers, MasterInterface and UnityContainer libraries. Each library target single responsibility.
+	- This project holds reference of DataContract, Helper, Managers, MasterInterface and UnityContainer libraries. Each library targets single responsibility.
 	Lets discuss objective/benefits of each library one by one below.
 
 2. DataContract
@@ -82,7 +82,7 @@ Backend architecture includes several libraries holding individual objective i.e
 	  Generic methods provides code reusability and minimizes the duplicate code.
 	- Database Manager interacts with database.
 	- ItemManager is the feature specific manager which holds feature specific methods that interacts with database manager to complete DB interaction for CRUD.
-
+	
 5. MasterInterface
 	- As we already know that the application is loosely coupled, without interface it was not possible.
 	- This library holds all the interfaces required/used in the application.
@@ -98,7 +98,7 @@ Backend architecture includes several libraries holding individual objective i.e
 	- Elimiates the new keyword and application becomes loosely couples.
 	- Constructor dependency implementation can be observed as well.
 
-with the said terms, we can consider the application is capable enough to achieve the current task. 
+with the said terms, we can consider the application is scalable enough to extend implementation. 
 Basic coding guidelines are strictly followed like naming conventions, code refactoring, code reusability, code readability, code commenting. 
 SQL queries(SPs) are also written considering basic guidelines and to get grid recods SQL JSON feature is used, a nice feature to boost performance by eliminating DB object to application object mapping, simple return JSON from SQL.
 
