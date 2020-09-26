@@ -1,0 +1,8 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+ul,  
+li {  
+      margin: 0;  
+      padding: 0;  
+      list-style: none;  
+}
